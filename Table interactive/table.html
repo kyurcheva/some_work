@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Table</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+	<div>
+		<button id="btn_big_data" type="button">BIG DATA</button>
+		<button id="btn_small_data" type="button">SMALL DATA</button>
+	</div>
+	<h3>Table</h3>
+	<button id="btn_show_add">ADD RECORD</button>
+	<form id="search_form">
+			<input id="input_search" type="text" name="inp_search">
+			<button id="btn_search" type="button">SEARCH</button>
+	</form>
+	<form id="add_form" action="">
+		<span>Form</span><br><br>
+		Id:<input id="form_id" type="number" name="id" placeholder="Add Id" onkeyup="check()"><br>
+		First Name:<input id="form_fn" type="text" name="firstName" placeholder="Add First Name" onkeyup="check()"><br>
+		Last Name:<input id="form_ln" type="text" name="lastName" placeholder="Add Last Name" onkeyup="check()"><br>
+		Email:<input id="form_em" type="text" name="email" placeholder="Add Email" onkeyup="check()"><br>
+		Phone:<input id="form_ph" type="text" name="phone" placeholder="(999)999-9999" onkeyup="check()"><br>
+		<br>
+		<input id="btn_add" type="button" name="btn_add" value="Add">
+	</form>
+	<table id="table">
+		<thead>
+			<tr id="tab_headline">
+				<td id="tab_id">id</td>
+				<td id="tab_fn">firstName</td>
+				<td>lastName</td>
+				<td>email</td>
+				<td>phone</td>
+			</tr>
+		</thead>		
+		<tbody>
+		</tbody>
+		<tfoot>
+			<tr><td colspan="5"></td></tr>
+		</tfoot>	
+	</table>
+	<table id="info_table">
+			<thead>
+				<tr><td colspan="2">Info</td></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>id</td>
+					<td id="inf_id"></td>
+				</tr>
+				<tr>
+					<td>firstName</td>
+					<td id="inf_fn"></td>
+				</tr>
+				<tr>
+					<td>lastName</td>
+					<td id="inf_ln"></td>
+				</tr>
+				<tr>
+					<td>email</td>
+					<td id="inf_em"></td>
+				</tr>
+				<tr>
+					<td>phone</td>
+					<td id="inf_ph"></td>
+				</tr>
+				<tr>
+					<td>User selected:</td>
+					<td id="inf_user"></td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td id="inf_desc"></textarea></td>
+				</tr>
+				<tr>
+					<td>Address:</td>
+					<td id="inf_address"></td>
+				</tr>
+				<tr>
+					<td>City:</td>
+					<td id="inf_city"></td>
+				</tr>
+				<tr>
+					<td>State:</td>
+					<td id="inf_state"></td>
+				</tr>
+				<tr>
+					<td>Zip:</td>
+					<td id="inf_zip"></td>
+				</tr>
+			</tbody>
+	</table>
+	<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+table{
+	border-collapse: collapse;
+	float: left;
+	margin-left: 30px;
+}
+
+table tr td{
+	border: 1px solid black;
+	padding: 10px;
+}
+
+thead{
+	font-weight: bold;
+}
+
+#add_form{
+	padding: 10px;
+	border: 1px solid black;
+	float: left;
+	margin-left: 30px;
+	font-weight: bold;
+	display: none;
+}
+
+#search_form{
+	float: right;
+	margin-right: 300px;
+}
+
+#btn_search{
+	float: right;
+}
+
+#info_table{
+	display: none;
+	max-width: 400px;
+}
+
+input{
+	width: 100%;
+}
+
+#btn_show_add{
+	float: left;
+}
+
+.disable{
+
+}
