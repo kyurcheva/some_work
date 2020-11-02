@@ -181,6 +181,8 @@ var data;
 					console.log('hide');
 					//$('#info_table').addClass("d-none");
 					PopUpHide();
+					$('#popup-add-form').hide();
+
 				}
 			});
 			
@@ -194,7 +196,7 @@ var data;
 				} else{
 					$('#btn_add').attr("disabled", "disabled");
 				}
-				//$('#btn_add').disabled = document.forms[0].elements.id.value ? "" : "disabled";
+				$('#btn_add').disabled = document.forms[0].elements.id.value ? "" : "disabled";
 			}
 
 			//----------Функция проверки валидности введенных значений для ID, email, phone и добавления новой строки в начало таблицы
@@ -206,23 +208,22 @@ var data;
 					}
 				}	
 				if ($('#form_em').val().match(/^[A-Z]{2}.+[@]{1}.+[.]{1}.+$/) && $('#form_ph').val().match(/^\([0-9]{3}\)[0-9]{3}\-[0-9]{4}$/)){
-					$('tbody:first').before('<tr id="r_' + r_id + '" class="row"><td class="id">' + $('#form_id').val() + '</td><td class="firstName">' + $('#form_fn').val() + '</td><td class="lastName">' + $('#form_ln').val() + '</td><td class="email">' + $('#form_em').val() + '</td><td class="phone">' + $('#form_ph').val() + '</td></tr>');
+					$('#table-body:first').before('<tr id="r_' + r_id + '" class="table-row"><td scope="row" class="id">' + $('#form_id').val() + '</td><td class="firstName">' + $('#form_fn').val() + '</td><td class="lastName">' + $('#form_ln').val() + '</td><td class="email">' + $('#form_em').val() + '</td><td class="phone">' + $('#form_ph').val() + '</td></tr>');
 					r_id++;
 				} else if (!$('#form_em').val().match(/^[A-Z]{2}.+[@]{1}.+[.]{1}.+$/)){
 							alert("Email is not correct. Example: XXxxxxx@xxx.xxx");
-						}
-						if (!$('#form_ph').val().match(/^\([0-9]{3}\)[0-9]{3}\-[0-9]{4}$/)){
+						} else if (!$('#form_ph').val().match(/^\([0-9]{3}\)[0-9]{3}\-[0-9]{4}$/)){
 							alert("Phone is not correct. Example: (XXX)XXX-XXXX");
 						}
-				$('#add_form').hide();
-				$('#btn_show_add').show();
+				$('#popup-add-form').hide();
+				//$('#btn_show_add').show();
 			});	
 
 
 			//---------Клик по кнопке ADD RECORD, открытие формы для ввода
 			$('#btn_show_add').click(function(){
-				$('#add_form').show();
-				$('#btn_show_add').hide();
+				$('#popup-add-form').show();
+				//$('#btn_show_add').hide();
 				$('#btn_add').attr("disabled", "disabled");
 			});
 
@@ -233,6 +234,7 @@ var data;
 	$(document).ready(function(){
         //Скрыть PopUp при загрузке страницы    
         PopUpHide();
+        $('#popup-add-form').hide();
     });
     
     //Функция отображения PopUp

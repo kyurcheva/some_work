@@ -1,7 +1,10 @@
 body{
 	background-color: #3D2645;
 }
-
+.table{
+	padding-bottom: 1em;
+	margin-bottom: 0;
+}
 h1{
 	margin-bottom: 20px;
 }
@@ -26,7 +29,7 @@ h1{
     z-index: 3;
 }
 .b-popup .b-popup-content{
-    margin: auto auto;
+	margin: 7% auto 0 auto;
     width: 50%;
     /*height: 40px;*/
     padding: 10px;
