@@ -3,11 +3,71 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Table</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
+	<!-- PopUp INFO-->
+	<div class="b-popup" id="popup-info">
+	    <div class="b-popup-content">
+	     	<h2>Info</h2>
+	     	<table id="info_table" class="table table-bordered table-hover">
+			<tbody>
+				<tr>
+					<th scope="row">Id</th>
+					<td id="inf_id"></td>
+				</tr>
+				<tr>
+					<th scope="row">FirstName</th>
+					<td id="inf_fn"></td>
+				</tr>
+				<tr>
+					<th scope="row">LastName</th>
+					<td id="inf_ln"></td>
+				</tr>
+				<tr>
+					<th scope="row">Email</th>
+					<td id="inf_em"></td>
+				</tr>
+				<tr>
+					<th scope="row">Phone</th>
+					<td id="inf_ph"></td>
+				</tr>
+				<tr>
+					<th scope="row">User selected:</th>
+					<td id="inf_user"></td>
+				</tr>
+				<tr>
+					<th scope="row">Description:</th>
+					<td id="inf_desc"></td>
+				</tr>
+				<tr>
+					<th scope="row">Address:</th>
+					<td id="inf_address"></td>
+				</tr>
+				<tr>
+					<th scope="row">City</th>
+					<td id="inf_city"></td>
+				</tr>
+				<tr>
+					<th scope="row">State</th>
+					<td id="inf_state"></td>
+				</tr>
+				<tr>
+					<th scope="row">Zip</th>
+					<td id="inf_zip"></td>
+				</tr>
+			</tbody>
+	</table>
+	    </div>
+	</div>
+
+
+	<div class="container">		
+	<!--
 	<div>
 		<button id="btn_big_data" type="button">BIG DATA</button>
 		<button id="btn_small_data" type="button">SMALL DATA</button>
@@ -28,73 +88,52 @@
 		<br>
 		<input id="btn_add" type="button" name="btn_add" value="Add">
 	</form>
-	<table id="table">
+-->
+	<h1 class="text-center">Super Table</h1>
+	<div class="row navigate">
+		<div class="col col-sm-3">
+			<button id="btn_small_data" class="btn btn-secondary">SMALL DATA</button>
+		</div>
+		<div class="col col-sm-3">
+			<button id="btn_big_data" class="btn btn-secondary">BIG DATA</button>
+		</div>
+		<div class="col col-sm-3">
+			<button id="btn_show_add" class="btn btn-secondary">ADD RECORD</button>
+		</div>
+		<div class="col col-sm-3">
+			<div class="row">
+				<form id="search_form">
+					<input id="input_search" type="text" name="inp_search">
+					<button id="btn_search" class="btn btn-secondary" type="button">SEARCH</button>
+	</form>
+			</div>
+		</div>
+	</div>
+
+	<table id="table" class="table table-bordered table-hover">
 		<thead>
 			<tr id="tab_headline">
-				<td id="tab_id">id</td>
-				<td id="tab_fn">firstName</td>
-				<td>lastName</td>
-				<td>email</td>
-				<td>phone</td>
+				<th id="tab_id" scope="col">Id</th>
+				<th id="tab_fn" scope="col">FirstName</th>
+				<th scope="col">LastName</th>
+				<th scope="col">Email</th>
+				<th scope="col">Phone</th>
 			</tr>
 		</thead>		
-		<tbody>
-		</tbody>
-		<tfoot>
-			<tr><td colspan="5"></td></tr>
-		</tfoot>	
+		<tbody id="table-body">
+			<!--<tr>
+				<th scope="row">333</th>
+				<td>Jon</td>
+				<td>Hell</td>
+				<td>kngklnl@yandex.ru</td>
+				<td>56678585858</td>
+			</tr>
+		-->
+		</tbody>	
 	</table>
-	<table id="info_table">
-			<thead>
-				<tr><td colspan="2">Info</td></tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>id</td>
-					<td id="inf_id"></td>
-				</tr>
-				<tr>
-					<td>firstName</td>
-					<td id="inf_fn"></td>
-				</tr>
-				<tr>
-					<td>lastName</td>
-					<td id="inf_ln"></td>
-				</tr>
-				<tr>
-					<td>email</td>
-					<td id="inf_em"></td>
-				</tr>
-				<tr>
-					<td>phone</td>
-					<td id="inf_ph"></td>
-				</tr>
-				<tr>
-					<td>User selected:</td>
-					<td id="inf_user"></td>
-				</tr>
-				<tr>
-					<td>Description:</td>
-					<td id="inf_desc"></textarea></td>
-				</tr>
-				<tr>
-					<td>Address:</td>
-					<td id="inf_address"></td>
-				</tr>
-				<tr>
-					<td>City:</td>
-					<td id="inf_city"></td>
-				</tr>
-				<tr>
-					<td>State:</td>
-					<td id="inf_state"></td>
-				</tr>
-				<tr>
-					<td>Zip:</td>
-					<td id="inf_zip"></td>
-				</tr>
-			</tbody>
-	</table>
+	
+
+	</div>
 	<script src="js/script.js"></script>
 </body>
 </html>

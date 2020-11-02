@@ -16,7 +16,9 @@ var data;
 					$(function(){
 							
 						for (var i = 0; i < data.length; i++) {
-							$('#table').append('<tr id="r_' + r_id + '" class="row"><td class="id">' + data[i].id + '</td><td class="firstName">' + data[i].firstName + '</td><td class="lastName">' + data[i].lastName + '</td><td class="email">' + data[i].email + '</td><td class="phone">' + data[i].phone + '</td></tr>');
+							///$('#table').append('<tr id="r_' + r_id + '" class="row"><td class="id">' + data[i].id + '</td><td class="firstName">' + data[i].firstName + '</td><td class="lastName">' + data[i].lastName + '</td><td class="email">' + data[i].email + '</td><td class="phone">' + data[i].phone + '</td></tr>');
+							$('#table-body').append('<tr id="r_' + r_id + '" class="table-row"><th scope="row" class="id">' + data[i].id + '</th><td class="firstName">' + data[i].firstName + '</td><td class="lastName">' + data[i].lastName + '</td><td class="email">' + data[i].email + '</td><td class="phone">' + data[i].phone + 
+								'</td></tr>');
 							r_id++;
 						}
 						});
@@ -64,8 +66,6 @@ var data;
 						}
 					}
 				}
-
-
 			});
 
 			//-------------Сортировка по ID
@@ -143,10 +143,11 @@ var data;
 
 			//-----------------Вывод таблицы Info для элемента, по клику на его строку
 
-			$('#table').on('click', '.row', function(e){
+			$('#table').on('click', '.table-row', function(e){
 				var row = $(this).children();
 				var rowElem;
-				$("#info_table").show();
+				//$("#info_table").show();
+				$("#info-table").removeClass('d-none');
 				$('#inf_id').html(row[0].textContent);
 				$('#inf_fn').html(row[1].textContent);
 				$('#inf_ln').html(row[2].textContent);
@@ -168,14 +169,18 @@ var data;
 				$('#inf_city').html(rowElem.address.city);
 				$('#inf_state').html(rowElem.address.state);
 				$('#inf_zip').html(rowElem.address.zip);
+
+				PopUpShow();
 					
 			});
 
 			//--------Скрыть инфо по клику в пустом участке страницы
+			
 			$(document).click(function(e){
 				if (!$('#table').is(e.target) && $('#table').has(e.target).length === 0 && !$('#info_table').is(e.target) && $('#info_table').has(e.target).length === 0 && !$('#add_form').is(e.target) && $('#add_form').has(e.target).length === 0 && !$('#btn_show_add').is(e.target)){
 					console.log('hide');
-					$('#info_table').hide();
+					//$('#info_table').addClass("d-none");
+					PopUpHide();
 				}
 			});
 			
@@ -220,3 +225,22 @@ var data;
 				$('#btn_show_add').hide();
 				$('#btn_add').attr("disabled", "disabled");
 			});
+
+
+
+
+			//-----------------
+	$(document).ready(function(){
+        //Скрыть PopUp при загрузке страницы    
+        PopUpHide();
+    });
+    
+    //Функция отображения PopUp
+    function PopUpShow(){
+        $("#popup-info").show();
+    }
+    
+    //Функция скрытия PopUp
+    function PopUpHide(){
+        $("#popup-info").hide();
+    }

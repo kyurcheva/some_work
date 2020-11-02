@@ -1,4 +1,40 @@
-table{
+body{
+	background-color: #3D2645;
+}
+
+h1{
+	margin-bottom: 20px;
+}
+.container{
+	background-color: #F0EFF4;
+	padding-top: 30px;
+}
+
+.navigate{
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background-color: hsl(285, 30%, 80%);
+}
+
+.b-popup{
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    z-index: 3;
+}
+.b-popup .b-popup-content{
+    margin: auto auto;
+    width: 50%;
+    /*height: 40px;*/
+    padding: 10px;
+    background-color: #F0EFF4;
+    box-shadow: 0px 0px 10px #000;
+    z-index: 3;
+}
+/*table{
 	border-collapse: collapse;
 	float: left;
 	margin-left: 30px;
@@ -47,3 +83,5 @@ input{
 .disable{
 
 }
+
+*/
