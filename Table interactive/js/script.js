@@ -9,18 +9,19 @@ var data;
 			req.open('GET', url);
 			req.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200){
-					//document.getElementById('demo').innerHTML = req.responseText;
 					console.log(req.responseText);
 					data = JSON.parse(req.response);
 					console.log(data.length);
 					$(function(){
 							
 						for (var i = 0; i < data.length; i++) {
-							///$('#table').append('<tr id="r_' + r_id + '" class="row"><td class="id">' + data[i].id + '</td><td class="firstName">' + data[i].firstName + '</td><td class="lastName">' + data[i].lastName + '</td><td class="email">' + data[i].email + '</td><td class="phone">' + data[i].phone + '</td></tr>');
-							$('#table-body').append('<tr id="r_' + r_id + '" class="table-row"><th scope="row" class="id">' + data[i].id + '</th><td class="firstName">' + data[i].firstName + '</td><td class="lastName">' + data[i].lastName + '</td><td class="email">' + data[i].email + '</td><td class="phone">' + data[i].phone + 
+							
+
+							$('#table_body').append('<tr id="r_' + r_id + '" class="table-row"><th scope="row" class="id">' + data[i].id + '</th><td class="firstName">' + data[i].firstName + '</td><td class="lastName">' + data[i].lastName + '</td><td class="email">' + data[i].email + '</td><td class="phone">' + data[i].phone + 
 								'</td></tr>');
 							r_id++;
 						}
+						$('#btn_show_add').removeAttr("disabled");
 						});
 
 				}
@@ -129,7 +130,8 @@ var data;
 						$('#r_' + r).hide();
 					}
 				}
-
+				$('#btn_back').show();
+				/*$('#table').append('<button id="btn_back" class="btn btn-secondary">BACK</button>');*/
 				/*for (var p = 0; p < arr.length; p++){
 					for (var q = 1; q <= arr.length; q++){
 						if ($('#r_' + q).children('.id').html() == arr[p]){
@@ -139,6 +141,13 @@ var data;
 				}*/
 			});
 
+			//----------------Кнопка BACK
+				$('#btn_back').click(function(){
+					$('#btn_back').hide();
+					for (var r = 1; r <= data.length; r++){
+						$('#r_' + r).show();
+					}
+				});
 
 
 			//-----------------Вывод таблицы Info для элемента, по клику на его строку
@@ -169,8 +178,7 @@ var data;
 				$('#inf_city').html(rowElem.address.city);
 				$('#inf_state').html(rowElem.address.state);
 				$('#inf_zip').html(rowElem.address.zip);
-
-				PopUpShow();
+				$("#popup_info").show();
 					
 			});
 
@@ -180,8 +188,8 @@ var data;
 				if (!$('#table').is(e.target) && $('#table').has(e.target).length === 0 && !$('#info_table').is(e.target) && $('#info_table').has(e.target).length === 0 && !$('#add_form').is(e.target) && $('#add_form').has(e.target).length === 0 && !$('#btn_show_add').is(e.target)){
 					console.log('hide');
 					//$('#info_table').addClass("d-none");
-					PopUpHide();
-					$('#popup-add-form').hide();
+					$("#popup_info").hide();
+					$('#popup_add_form').hide();
 
 				}
 			});
@@ -208,22 +216,21 @@ var data;
 					}
 				}	
 				if ($('#form_em').val().match(/^[A-Z]{2}.+[@]{1}.+[.]{1}.+$/) && $('#form_ph').val().match(/^\([0-9]{3}\)[0-9]{3}\-[0-9]{4}$/)){
-					$('#table-body:first').before('<tr id="r_' + r_id + '" class="table-row"><td scope="row" class="id">' + $('#form_id').val() + '</td><td class="firstName">' + $('#form_fn').val() + '</td><td class="lastName">' + $('#form_ln').val() + '</td><td class="email">' + $('#form_em').val() + '</td><td class="phone">' + $('#form_ph').val() + '</td></tr>');
+					$('#table_body:first').before('<tr id="r_' + r_id + '" class="table-row"><td scope="row" class="id">' + $('#form_id').val() + '</td><td class="firstName">' + $('#form_fn').val() + '</td><td class="lastName">' + $('#form_ln').val() + '</td><td class="email">' + $('#form_em').val() + '</td><td class="phone">' + $('#form_ph').val() + '</td></tr>');
 					r_id++;
 				} else if (!$('#form_em').val().match(/^[A-Z]{2}.+[@]{1}.+[.]{1}.+$/)){
 							alert("Email is not correct. Example: XXxxxxx@xxx.xxx");
 						} else if (!$('#form_ph').val().match(/^\([0-9]{3}\)[0-9]{3}\-[0-9]{4}$/)){
 							alert("Phone is not correct. Example: (XXX)XXX-XXXX");
 						}
-				$('#popup-add-form').hide();
+				$('#popup_add_form').hide();
 				//$('#btn_show_add').show();
 			});	
 
 
 			//---------Клик по кнопке ADD RECORD, открытие формы для ввода
 			$('#btn_show_add').click(function(){
-				$('#popup-add-form').show();
-				//$('#btn_show_add').hide();
+				$('#popup_add_form').show();
 				$('#btn_add').attr("disabled", "disabled");
 			});
 
@@ -233,16 +240,9 @@ var data;
 			//-----------------
 	$(document).ready(function(){
         //Скрыть PopUp при загрузке страницы    
-        PopUpHide();
-        $('#popup-add-form').hide();
+        $('#popup_info').hide()
+        $('#popup_add_form').hide();
+        $('#btn_back').hide();
+        //$('#btn_show_add').attr("disabled", "disabled");
     });
     
-    //Функция отображения PopUp
-    function PopUpShow(){
-        $("#popup-info").show();
-    }
-    
-    //Функция скрытия PopUp
-    function PopUpHide(){
-        $("#popup-info").hide();
-    }
